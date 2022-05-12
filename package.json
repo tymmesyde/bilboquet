@@ -1,0 +1,24 @@
+{
+  "name": "bilboquet",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "postinstall": "npm run build",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "extract-zip": "^2.0.1",
+    "loglevel": "^1.8.0",
+    "ws": "^8.6.0"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.5.3",
+    "devtools-protocol": "^0.0.1001819",
+    "typescript": "^4.6.4"
+  }
+}
