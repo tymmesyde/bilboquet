@@ -30,13 +30,13 @@ class Controller {
         if (this.retries >= this.maxRetries)
             return Promise.reject();
 
-        return new Promise<string>((resolve) => {
+        return new Promise<string>((resolve, reject) => {
             this.retries++;
             setTimeout(async () => {
                 try {
-                    const { data }: { data: Tab[] } = await axios.get(`http://localhost:${this.port}/json`);
-                    const tabs = data.filter(({ type }) => type === 'page');
-                    resolve(tabs[0].id);
+                    const { data }: { data: Tab[] } = await axios.get(`http://localhost:${this.port}/json`);                    
+                    const tab = data.find(({ type, url }) => type === 'page' && url === 'chrome://newtab/');
+                    tab ? resolve(tab.id) : reject();
                 } catch (e) {
                     log.error('Retry connecting...');
                     log.debug(e);

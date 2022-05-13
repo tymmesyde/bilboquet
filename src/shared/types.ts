@@ -7,8 +7,9 @@ type Config = {
 };
 
 type Tab = {
-    type: string;
     id: string;
+    type: string;
+    url: string;
 }
 
 export {
