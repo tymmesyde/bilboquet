@@ -38,9 +38,18 @@ const moveDirectoryFiles = async (src: string, out: string) => {
     await rmdir(src);
 };
 
+const splitIntoChunks = (array: Array<any>, chunk: number) => {
+    const splitted = [];
+    for (let i = 0; i < array.length; i += chunk) {
+        splitted.push(array.slice(i, i + chunk));
+    }
+    return splitted;
+}
+
 export {
     getRootFolder,
     downloadFile,
     extractZip,
-    moveDirectoryFiles
+    moveDirectoryFiles,
+    splitIntoChunks
 };
