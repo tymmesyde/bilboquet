@@ -13,12 +13,14 @@ type Reply = {
 class Socket extends EventEmitter {
     private socket: WebSocket | null;
     private requestId: number;
+    private requestTimeout: number;
     
     constructor() {
         super();
 
         this.socket = null;
         this.requestId = 0;
+        this.requestTimeout = 5000;
     }
 
     private onMessage(message: string) {
@@ -65,6 +67,11 @@ class Socket extends EventEmitter {
                 method,
                 params
             }));
+
+            setTimeout(() => {
+                this.off(this.requestId.toString(), onReply);
+                reject();
+            }, this.requestTimeout);
         });
     }
 
