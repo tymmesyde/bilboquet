@@ -2,13 +2,23 @@
   "name": "bilboquet",
   "version": "0.1.0",
   "description": "",
+  "keywords": ["chromium", "e2e"],
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "postinstall": "npm run build",
+    "prepublishOnly": "npm run build",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClydeDz/add-demo-npm.git"
+  },
+  "author": "tymmesyde",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
