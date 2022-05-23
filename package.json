@@ -1,8 +1,11 @@
 {
   "name": "bilboquet",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
-  "keywords": ["chromium", "e2e"],
+  "keywords": [
+    "chromium",
+    "e2e"
+  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
