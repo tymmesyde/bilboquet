@@ -185,6 +185,26 @@ class Controller {
             log.debug(e);
         }
     }
+
+    waitForSelector(selector: string, retries = 0) {     
+        if (typeof selector !== 'string')
+            throw new Error('selector must be a string');
+        
+        if (retries >= this.maxRetries)
+            return Promise.reject(`waitForSelector failed after ${this.maxRetries} retries.`);
+
+        return new Promise((resolve, reject) => {
+            setTimeout(async () => {
+                try {
+                    const result = await this.getElementBySelector(selector);
+                    result ? resolve(result) : resolve(this.waitForSelector(selector, retries + 1));
+                } catch(e) {
+                    log.debug(e);
+                    reject(e);
+                }
+            }, 1000);
+        });   
+    }
 }
 
 export default Controller;
